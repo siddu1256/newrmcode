@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap');
+
+.aboutpagecss {
+    background-image: url('./assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.infodiv {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 55rem; /* Increased width to fit content-div properly */
+    height: 45rem;
+    overflow-y: auto;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.infodiv::-webkit-scrollbar {
+    width: 0; /* Hide scrollbar for Webkit browsers */
+}
+
+.content-div {
+    width: 55rem;
+    height: 30rem;
+    margin: 4rem 0;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 1rem;
+}
+.developer-image {
+    width: 100%;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+h2{
+    text-align: center;
+    padding-top:1rem ;
+}
+.contact-details {
+    padding-left: 2rem;
+    text-align: left;
+}
+
+.complaint-box {
+    width: 80%;
+    font-family: 'Urbanist', sans-serif;
+    height: 5rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border: 1px solid #ccc;
+}
+
+.fancybutton {
+    background-color: #007bff; /* Default blue color for the button */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer; /* Pointer cursor */
+    font-family: 'Urbanist', sans-serif;
+    display: flex; /* Flexbox to align items */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.fancybutton.disabled {
+    background-color: gray; /* Gray color for the disabled state */
+    cursor: not-allowed; /* Not-allowed cursor */
+}
+
+.fancybutton .tick {
+    display: none; /* Hide tick mark initially */
+    margin-right: 0.5rem; /* Space between tick and text */
+}
+
+.fancybutton.disabled .tick {
+    display: inline; /* Show tick mark when disabled */
+}
+
+.fancybutton.disabled::before {
+    content: '✔'; /* Tick mark */
+    margin-right: 0.5rem; /* Space between tick and text */
+}

@@ -1,26 +1,45 @@
 import React, { useState } from "react";
 import { CiUser } from "react-icons/ci";
+import { IoMdClose } from "react-icons/io";
 import Axios from "axios";
 import bcrypt from "bcryptjs";
 
-function RegisterPop() {
+function RegisterPop({ onClose }) {
   const [fullName, setFullName] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleRegister = async () => {
+    if (!fullName || !mobileNumber || !password || !confirmPassword) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters long.");
+      return;
+    }
+
+    if (mobileNumber.length != 10){
+      alert("Mobile number should be 10 digits");
+    }
+
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
 
     try {
-      const existingUser = await Axios.get(`http://localhost:3000/users?mobilenumber=eq.${mobileNumber}`);
-      console.log("Existing user check response:", existingUser.data);
-
-      if (existingUser.data.length > 0) {
+      const existingUserByMobile = await Axios.get(`http://localhost:3000/users?mobilenumber=eq.${mobileNumber}`);
+      if (existingUserByMobile.data.length > 0) {
         alert("Mobile number already exists!");
+        return;
+      }
+
+      const existingUserByUsername = await Axios.get(`http://localhost:3000/users?fullname=eq.${fullName}`);
+      if (existingUserByUsername.data.length > 0) {
+        alert("Username already exists!");
         return;
       }
 
@@ -40,6 +59,7 @@ function RegisterPop() {
 
       console.log("Registration response:", response.data);
       alert("User registered successfully!");
+      onClose();
     } catch (error) {
       console.error("Error registering user:", error.response || error);
       alert("Error registering user.");
@@ -49,14 +69,15 @@ function RegisterPop() {
   return (
     <div className="modal-overlay">
       <div className="signin-popup">
+        <div className="close-button" onClick={onClose}><IoMdClose /></div>
         <h1>Register</h1>
         <CiUser className="profileicon" />
         <div className="UserName">
-          <p>Full Name</p>
+          <p>Username</p>
           <input
             type="text"
             className="details"
-            placeholder="Enter your name"
+            placeholder="Enter username"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
           />
@@ -66,7 +87,7 @@ function RegisterPop() {
           <input
             type="tel"
             className="details"
-            placeholder="Enter your mobile number"
+            placeholder="Enter mobile number"
             value={mobileNumber}
             onChange={(e) => setMobileNumber(e.target.value)}
           />

@@ -1,0 +1,111 @@
+.nav {
+    padding-left: 1.4rem;
+    padding-top: 0.5rem;
+}
+
+.maindiv {
+    background-color: #d6d6d6;
+    height: 30rem;
+    border-radius: 1rem;
+    outline: 1px solid lightgray;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: calc(100% - 3rem);
+    padding: 10px;
+    overflow-y: auto; /* Allows vertical scrolling */
+    overflow-x: hidden; /* Hides horizontal scrollbar */
+}
+
+.mainduv::-webkit-scrollbar {
+    display: none;
+  }
+  
+ .maindiv{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+.items {
+    background-color: rgb(255, 255, 255);
+    height: 9rem;
+    border-radius: 1rem;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+    position: relative; /* Relative positioning for button placement */
+}
+
+.product-image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    padding-right: 1rem;
+}
+
+.coloring {
+    font-weight: 700;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Distributes space between the product info and price info */
+    width: 100%;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.ratings {
+    background-color: #D9D9D9;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+}
+
+.rating-text {
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.vertical-line {
+    height: 1.5rem; 
+    width: 1px;
+    background-color: rgb(64, 64, 64);
+    margin: 0 0.5rem; 
+}
+
+.price-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 25rem; /* Ensures some space between the price and the button */
+}
+
+.compare-button {
+    background-color: #8d8d8d;
+    font-weight: bold;
+    font-family: "Urbanist", sans-serif;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    position: absolute;
+    right: 2rem; /* 10px from the right edge of the items div */
+    top: 50%; /* Vertically centers the button */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+}
+
+.compare-button:hover {
+    background-color: #585858;
+}
